@@ -305,7 +305,7 @@ type forwardAuth struct {
 }
 
 // New creates a forward auth middleware.
-func New(ctx context.Context, next http.Handler, config Config, name string) (http.Handler, error) {
+func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	fa := &forwardAuth{
 		address:             config.Address,
 		authResponseHeaders: config.AuthResponseHeaders,
