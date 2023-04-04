@@ -276,6 +276,10 @@ type Config struct {
 	AuthRequestHeaders []string `json:"authRequestHeaders,omitempty" toml:"authRequestHeaders,omitempty" yaml:"authRequestHeaders,omitempty" export:"true"`
 }
 
+func CreateConfig() *Config {
+	return &Config{}
+}
+
 type logWriter struct {
 }
 
