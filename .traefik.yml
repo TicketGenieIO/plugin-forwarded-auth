@@ -1,4 +1,4 @@
-displayName: Forwarded Auth with body forwarding
+displayName: Forwarded Auth Including Body
 summary: Works exactly like built-in forwarded auth middleware but can forward body
 type: middleware
 import: github.com/ticketgenieio/plugin_forwardedauth
