@@ -1,3 +1,3 @@
-module github.com/ticketgenieio/plugin_forwardedauth
+module github.com/TicketGenieIO/plugin_forwardedauth
 
 go 1.19
