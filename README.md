@@ -1,1 +1,1 @@
-# plugin-forwarded-auth
+# plugin_forwardedauth

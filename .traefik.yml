@@ -1,5 +1,5 @@
 displayName: Forwarded Auth with body forwarding
 summary: Works exactly like built-in forwarded auth middleware but can forward body
 type: middleware
-import: github.com/TicketGenieIO/plugin-forwarded-auth
+import: github.com/ticketgenieio/plugin_forwardedauth
 compatibility: TODO
