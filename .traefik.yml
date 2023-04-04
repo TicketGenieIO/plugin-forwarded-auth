@@ -2,4 +2,9 @@ displayName: Forwarded Auth with body forwarding
 summary: Works exactly like built-in forwarded auth middleware but can forward body
 type: middleware
 import: github.com/ticketgenieio/plugin_forwardedauth
-compatibility: TODO
+
+testData:
+  shouldForwardBody: true
+  authResponseHeaders:
+    - X-Demo
+  address: http://identity.app.svc.cluster.local/auth/forward
