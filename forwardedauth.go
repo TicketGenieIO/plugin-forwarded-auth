@@ -1,6 +1,7 @@
 package plugin_forwardedauth
 
 import (
+	"bytes"
 	"context"
 	"crypto/tls"
 	"crypto/x509"
@@ -350,7 +351,18 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 func (fa *forwardAuth) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	var forwardedBody io.Reader
 	if fa.shouldForwardBody {
-		forwardedBody = req.Body
+		reqBody, readErr := io.ReadAll(req.Body)
+		if readErr != nil {
+			logMessage := fmt.Sprintf("Error reading request body %s. Cause: %s", fa.address, readErr)
+			fa.logger.info(logMessage)
+
+			rw.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		defer req.Body.Close()
+
+		req.Body = io.NopCloser(bytes.NewBuffer(reqBody))
+		forwardedBody = bytes.NewReader(reqBody)
 	}
 
 	forwardReq, err := http.NewRequest(http.MethodGet, fa.address, forwardedBody)
